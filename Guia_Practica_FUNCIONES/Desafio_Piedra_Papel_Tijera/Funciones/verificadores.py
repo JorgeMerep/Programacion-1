@@ -1,4 +1,4 @@
-def verificar_ganador_ronda(jugador: int, maquina: int)-> str:
+def verificar_ganador_ronda(jugador: int, maquina: int) -> str:
     """
     Determina quién ganó la ronda según las elecciones del jugador y la máquina.
 
@@ -15,7 +15,7 @@ def verificar_ganador_ronda(jugador: int, maquina: int)-> str:
         "Empate" → Si ambos eligen el mismo elemento.
 
     """
-    if (jugador == maquina):
+    if jugador == maquina:
         resultado_ronda = "Empate"
     elif (jugador == 1 and maquina == 3) or (jugador == 2 and maquina == 1) or (jugador == 3 and maquina == 2):
         resultado_ronda = "Jugador"
@@ -25,33 +25,40 @@ def verificar_ganador_ronda(jugador: int, maquina: int)-> str:
     return resultado_ronda
 
 
-def verificar_estado_partida(aciertos_jugador: int, aciertos_maquina: int, ronda_actual: int)-> bool:
+def verificar_estado_partida(aciertos_jugador: int, aciertos_maquina: int, ronda_actual: int, resultado_anterior: str) -> bool:
     """
     Determina si la partida sigue en curso o ya ha finalizado.
 
         Args:
-
         aciertos_jugador (int): Cantidad de rondas ganadas por el jugador.
-
         aciertos_maquina (int): Cantidad de rondas ganadas por la máquina.
-
         ronda_actual (int): Número de la ronda actual.
+        resultado_anterior (str): Resultado de la ronda anterior ("Jugador", "Máquina", "Empate").
 
         Returns:
-
         True → Si la partida sigue en curso.
-        False → Si la partida ha finalizado (porque alguien ganó dos veces seguidas o se jugaron todas las rondas).
-    
+        False → Si la partida ha finalizado.
     """
-    if aciertos_jugador >= 2 or aciertos_maquina >= 2:
+    # Finaliza si alguien gana 2 rondas consecutivas
+    if resultado_anterior == "Jugador" and aciertos_jugador == 2:
         return False
+    if resultado_anterior == "Máquina" and aciertos_maquina == 2:
+        return False
+
+    # Continúa si hay empate después de 3 rondas
+    if ronda_actual >= 3 and aciertos_jugador == aciertos_maquina:
+        return True
+
+    # Finaliza si se alcanzan 3 rondas y no hay empate
     if ronda_actual >= 3:
         return False
-    
-    return True
+
+    # Continúa en cualquier otro caso
+    else:
+        return True
 
 
-def verificar_ganador_partida(aciertos_jugador: int, aciertos_maquina: int)-> str:
+def verificar_ganador_partida(aciertos_jugador: int, aciertos_maquina: int) -> str:
     """
     Determina quién ganó la partida comparando los aciertos finales.
 
@@ -73,11 +80,11 @@ def verificar_ganador_partida(aciertos_jugador: int, aciertos_maquina: int)-> st
         resultado_partida = "Maquina"
     else:
         resultado_partida = "Empate"
-    
-    return resultado_partida
-    
 
-def mostrar_elemento(eleccion: int)-> str:
+    return resultado_partida
+
+
+def mostrar_elemento(eleccion: int) -> str:
     """
     Convierte la elección numérica en un texto legible.
 
@@ -92,60 +99,54 @@ def mostrar_elemento(eleccion: int)-> str:
         "Tijera" cuando su  elección == 3.
 
     """
-
     match eleccion:
-        case 1 : 
+        case 1: 
             opcion_elegida = "Piedra"
-            
-        case 2 : 
+        case 2: 
             opcion_elegida = "Papel"
-
-        case 3 : 
+        case 3: 
             opcion_elegida = "Tijera"
     
     return opcion_elegida
 
-
-def validar_entero_entre(numero: int, min: int, max: int)-> int:
+def validar_entero_entre(numero: int, min: int, max: int) -> int:
     """
     Validar que la opcion ingresada sea numerica.
 
         Args:
 
-        numero: int que representa la eleccion del usuario.
+        numero: va a ser un int que representa la eleccion del usuario.
 
         Returns:
 
-        int.
+        Un int.
 
     """
-    while not numero.isdigit() or (int (numero)< min or int (numero) > max):
+    while not numero.isdigit() or (int(numero) < min or int(numero) > max):
         numero = input('Opcion invalida. Intente nuevamente.')
     
     numero_int = int(numero)
     return numero_int
 
+
 def mostrar_presentacion():
-
     """
-    Muestra el menú de presentación del juego. 
-
+    Muestra la presentación del juego y las opciones disponibles.
+    
         Args:
-        No recibe argumentos.
-
+            No recibe argumentos.
         Returns:
-        Un string que representa el menú de presentación del juego.
+            No devuelve nada. Solo realiza un print.
+    
     """
-
-    menu = \
+    print(
         """
-        Bienvenido al  Juego Piedra, Papel o Tijera. Las opciones son:
+        Bienvenido al Juego Piedra, Papel o Tijera. Las opciones son:
 
-        1.Piedra.
-        2.Papel.
-        3.Tijera.
+        1. Piedra.
+        2. Papel.
+        3. Tijera.
 
+        ¡Que comience el juego!
         """
-
-    return menu
-
+    )

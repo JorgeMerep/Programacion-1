@@ -1,8 +1,7 @@
 from Funciones.verificadores import *
 import random
 
-#Inicializa el juego
-def jugar_piedra_papel_tijera()-> str:
+def jugar_piedra_papel_tijera() -> str:
     """
     Gestiona toda la lógica del juego, usando las funciones anteriores.
 
@@ -13,70 +12,51 @@ def jugar_piedra_papel_tijera()-> str:
         Se verifica si la partida continúa o si alguien ha ganado.
         Al finalizar, la función devuelve quién ganó la partida ("Jugador" o "Máquina").
 
-    """
+    """    
     ejecutando = True
 
     contador_rondas = 0
     contador_ganado_jugador = 0
     contador_ganado_maquina = 0
+    resultado_anterior = None
+
+    # Presentacion/Menu del Juego.
+    mostrar_presentacion()
 
     while ejecutando:
-        # Llama a una función para mostrar el menu del juego.
-        mostrar_presentacion()
-
-        # Solicita al usuario que ingrese una opcion (1: Piedra, 2: Papel, 3: Tijera).
+        # Solicita la elección al usuario.
         ingresar_opcion_usuario = input('Ingrese la opcion deseada: ')
+        ingresar_opcion_usuario = validar_entero_entre(ingresar_opcion_usuario, 1, 3)
 
-        # Valida que la entrada del usuario sea un número entero entre 1 y 3.
-        ingresar_opcion_usuario = validar_entero_entre(ingresar_opcion_usuario, 1 , 3)
+        # Genera la elección aleatoria de la máquina.
+        eleccion_opcion_maquina = random.randint(1, 3)
 
-        # Genera aleatoriamente la elección de la máquina (1: Piedra, 2: Papel, 3: Tijera).
-        eleccion_opcion_maquina = random.randint(1,3)
+        # Muestra las elecciones del usuario y de la máquina.
+        print(f'El usuario eligio la opcion: {mostrar_elemento(ingresar_opcion_usuario)}')
+        print(f'La maquina eligio la opcion: {mostrar_elemento(eleccion_opcion_maquina)}')
 
-        # Muestra la elección del usuario.
-        print (f'El usuario eligio la opcion: {mostrar_elemento(ingresar_opcion_usuario)}')
+        # Determina el ganador de la ronda.
+        resultado_ronda = verificar_ganador_ronda(ingresar_opcion_usuario, eleccion_opcion_maquina)
+        print(f'El ganador de esta ronda es: {resultado_ronda}')
 
-        # Muestra la elección de la máquina.
-        print (f'La maquina eligio la opcion: {mostrar_elemento(eleccion_opcion_maquina)}')
-
-        # Valida y muestra el resultado de la ronda (Jugador, Máquina o Empate).
-        print (f'El resultado de esta ronda es: {verificar_ganador_ronda(ingresar_opcion_usuario, eleccion_opcion_maquina)}')
-
-        # Incrementa el contador de rondas jugadas.
+        # Actualiza los contadores
         contador_rondas += 1
-
-         # Si el jugador gana la ronda, incrementa su contador de victorias.
-        if verificar_ganador_ronda(ingresar_opcion_usuario, eleccion_opcion_maquina) == "Jugador":
+        if resultado_ronda == "Jugador":
             contador_ganado_jugador += 1
-
-        # Si la máquina gana la ronda, incrementa su contador de victorias.
-        elif verificar_ganador_ronda(ingresar_opcion_usuario, eleccion_opcion_maquina) == "Maquina":
+        elif resultado_ronda == "Máquina":
             contador_ganado_maquina += 1
 
-        # Muestra el puntaje actual de la partida.    
-        print (f'El puntaje actual es: Jugador {contador_ganado_jugador} - Maquina {contador_ganado_maquina}')
-        
-        # Verifica si la partida debe finalizar (alguien ganó dos veces seguidas o se jugaron 3 rondas).
-        if verificar_estado_partida(contador_ganado_jugador, contador_ganado_maquina, contador_rondas) == False:
-                
-            # Muestra quién ganó la partida (Jugador o Máquina).
-            print (f'El ganador de la partida es: {verificar_ganador_partida(contador_ganado_jugador, contador_ganado_maquina)}')
-            
-            #Se cumplen los requisitos de ganador de partida y se finaliza el juego.
-            ejecutando = False
+        # Muestra el resultado parcial de la partida.
+        print(f'Resultado parcial: Jugador {contador_ganado_jugador} - Máquina {contador_ganado_maquina}')
 
-        # Si la partida no ha terminado, informa que sigue en curso.
-        else:
-            print ('La partida sigue en curso.')
+        # Verifica si la partida debe continuar.
+        ejecutando = verificar_estado_partida(contador_ganado_jugador,contador_ganado_maquina,contador_rondas,resultado_anterior)
 
-        #La partida debe terminar si el jugador gana 2 veces seguidas o si se juegan 3 rondas.
-        verificar_ganador_partida(contador_ganado_jugador, contador_ganado_maquina)
+        # Actualiza el resultado anterior.
+        resultado_anterior = resultado_ronda
 
-        #Si la partida no cumple los requisitos, se vuelve a iniciar el ciclo.
-        verificar_estado_partida(contador_ganado_jugador, contador_ganado_maquina, contador_rondas)
+    # Muestra el ganador de la partida.
+    print(f'El ganador de la partida es: {verificar_ganador_partida(contador_ganado_jugador, contador_ganado_maquina)}')
 
-        # Informa el ganador de la partida 
-    return verificar_ganador_partida(contador_ganado_jugador, contador_ganado_maquina)
-            
-        
+
 jugar_piedra_papel_tijera()

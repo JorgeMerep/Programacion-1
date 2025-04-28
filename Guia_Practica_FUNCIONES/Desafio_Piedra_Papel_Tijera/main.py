@@ -37,7 +37,7 @@ def jugar_piedra_papel_tijera() -> str:
 
         # Determina el ganador de la ronda.
         resultado_ronda = verificar_ganador_ronda(ingresar_opcion_usuario, eleccion_opcion_maquina)
-        print(f'El ganador de esta ronda es: {resultado_ronda}')
+        print(f'El resultado de esta ronda es: {resultado_ronda}')
 
         # Actualiza los contadores
         contador_rondas += 1
@@ -47,7 +47,7 @@ def jugar_piedra_papel_tijera() -> str:
             contador_ganado_maquina += 1
 
         # Muestra el resultado parcial de la partida.
-        print(f'Resultado parcial: Jugador {contador_ganado_jugador} - Máquina {contador_ganado_maquina}')
+        print(f'Resultado ronda: Jugador {contador_ganado_jugador} - Máquina {contador_ganado_maquina}')
 
         # Verifica si la partida debe continuar.
         ejecutando = verificar_estado_partida(contador_ganado_jugador,contador_ganado_maquina,contador_rondas,resultado_anterior)

@@ -15,6 +15,7 @@ def verificar_ganador_ronda(jugador: int, maquina: int) -> str:
         "Empate" → Si ambos eligen el mismo elemento.
 
     """
+    # Validacion para calcular el resultado de la ronda.
     if jugador == maquina:
         resultado_ronda = "Empate"
     elif (jugador == 1 and maquina == 3) or (jugador == 2 and maquina == 1) or (jugador == 3 and maquina == 2):
@@ -74,6 +75,7 @@ def verificar_ganador_partida(aciertos_jugador: int, aciertos_maquina: int) -> s
         "Máquina" → Si la máquina tiene más aciertos.
 
     """
+    #Validacion para calcular el ganador de la partida.
     if aciertos_jugador > aciertos_maquina:
         resultado_partida = "Jugador"
     elif aciertos_jugador < aciertos_maquina:
@@ -99,6 +101,7 @@ def mostrar_elemento(eleccion: int) -> str:
         "Tijera" cuando su  elección == 3.
 
     """
+    #Validacion para mostrar la opcion elegida por el usuario/maquina.
     match eleccion:
         case 1: 
             opcion_elegida = "Piedra"
@@ -122,6 +125,7 @@ def validar_entero_entre(numero: int, min: int, max: int) -> int:
         Un int.
 
     """
+    # Validacion para que el usuario ingrese un numero entre 1 y 3.
     while not numero.isdigit() or (int(numero) < min or int(numero) > max):
         numero = input('Opcion invalida. Intente nuevamente.')
     

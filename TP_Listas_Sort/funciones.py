@@ -171,7 +171,7 @@ def encontrar_garage_cantidad_mayor (mayor_cantidad_autos: int, lista_cantidad_a
 
 
 def mostrar_datos_garage_cantidad_mayor (lista_garage: list, lista_garage_cantidad_mayor: list,lista_autos_cantidades: list,
-    lista_autos_marcas, lista_autos_modelos, lista_autos_precios)-> list:
+    lista_autos_marcas, lista_autos_modelos, lista_autos_precios, lista_autos_ganancias)-> list:
 
     for indice in range(len(lista_garage_cantidad_mayor)):
 
@@ -184,6 +184,8 @@ def mostrar_datos_garage_cantidad_mayor (lista_garage: list, lista_garage_cantid
     Marca:  {lista_autos_marcas[posicion]}
     Modelo: {lista_autos_modelos[posicion]}
     Precio: {lista_autos_precios[posicion]}
+    Ganancias: {lista_autos_ganancias[posicion]}
+
     """ 
     print(datos_garage_mayor_cantidad)
 

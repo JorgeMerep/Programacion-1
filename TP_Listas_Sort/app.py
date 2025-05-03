@@ -48,7 +48,7 @@ def application(lista_autos_cantidades,
             case 4:
                 mayor_cantidad_autos = encontrar_cantidad_mayor(lista_autos_cantidades)
                 lista_garage_cantidad_mayor = list(encontrar_garage_cantidad_mayor(mayor_cantidad_autos, lista_autos_cantidades))
-                mostrar_datos_garage_cantidad_mayor(lista_garage, lista_garage_cantidad_mayor, lista_autos_cantidades, lista_autos_marcas, lista_autos_modelos, lista_autos_precios)
+                mostrar_datos_garage_cantidad_mayor(lista_garage, lista_garage_cantidad_mayor, lista_autos_cantidades, lista_autos_marcas, lista_autos_modelos, lista_autos_precios, lista_autos_ganancias)
             case 5:
                 lista_ganancias = calcular_ganancia_por_garage(lista_autos_precios, lista_autos_cantidades, lista_autos_ganancias)
                 print(lista_ganancias)

@@ -18,6 +18,7 @@ def mostrar_menu():
     5. Obtener recaudación: para ello deberás crear una función que calcule la recaudación de cada garaje y sobreescriba el resultado en la ubicación 
     correspondiente de la columna “Ganancias” (lista de ganancias) de cada garage, teniendo en cuenta su precio unitario y cantidad de unidades almacenadas en 
     cada garaje (El dato debe persistir en la lista de ganancias para ser visualizado por otros ejercicios).
+    6. Mostrar la cantidad de garajes que hayan almacenado 6 o más unidades de vehículos.
 
     """ 
     print(menu)
@@ -207,10 +208,27 @@ def calcular_ganancia_por_garage (lista_autos_precios: list, lista_autos_cantida
         lista_autos_ganancias[garage] = recaudacion_garage
  
     return lista_autos_ganancias
-        
+
+
+def garages_con_cantidad (lista_cantidades: list):
+
+    """
+    Calcula la cantidad de garages que tienen 6 autos o mas.
+
+    Args: Recibe una lista de cantidad de cada garage.
+
+    """         
           
-          
-          
-          
+    cantidad_buscada = 6
+
+    cantidad_garages = 0
+
+    for garage in range(len(lista_cantidades)):
+        if lista_cantidades[garage] >= cantidad_buscada:
+            cantidad_garages += 1
+
+    mensaje = f'La cantidad de garages que contienen {cantidad_buscada} o mas autos es: {cantidad_garages}'
+
+    print(mensaje)          
           
           

@@ -52,6 +52,9 @@ def application(lista_autos_cantidades,
             case 5:
                 lista_ganancias = calcular_ganancia_por_garage(lista_autos_precios, lista_autos_cantidades, lista_autos_ganancias)
                 print(lista_ganancias)
+            case 6:
+                lista_garages_con_6_autos = garages_con_cantidad(lista_autos_cantidades)
+                print(lista_garages_con_6_autos)
 
 
         clear_console()

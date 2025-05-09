@@ -89,8 +89,8 @@ def recorrer_matriz(matriz_heroes: list[list])-> None:
     """
     
     for indice in range(len(matriz_heroes[0])):
-
-        print(f"Nombre: {matriz_heroes[0][indice]}")
+        mensaje = f"Nombre: {matriz_heroes[0][indice]}"
+        print(mensaje)
 
 def recorrer_matriz_con_altura(matriz_heroes: list[list])-> None:
          
@@ -111,8 +111,8 @@ def recorrer_matriz_con_altura(matriz_heroes: list[list])-> None:
         """
         
         for indice in range(len(matriz_heroes[0])):
-
-            print(f"Nombre: {matriz_heroes[0][indice]} - Altura: {matriz_heroes[5][indice]}")
+            mensaje = "Nombre: {matriz_heroes[0][indice]} - Altura: {matriz_heroes[5][indice]}"
+            print(mensaje)
 
 def recorrer_matriz_con_personaje_mas_debil(matriz_heroes: list[list])-> None:
     
@@ -134,9 +134,15 @@ def recorrer_matriz_con_personaje_mas_debil(matriz_heroes: list[list])-> None:
         
         for indice in range(len(matriz_heroes[0])):
             if matriz_heroes[4][indice] == min(matriz_heroes[4]):
-                print(f"Nombre: {matriz_heroes[0][indice]} - Poder: {matriz_heroes[4][indice]} "
-                      f"- Altura: {matriz_heroes[5][indice]} - Genero: {matriz_heroes[3][indice]} "
-                      f"- Apodo: {matriz_heroes[2][indice]} - Identidad: {matriz_heroes[1][indice]}")
+                mensaje = ( 
+                     f"Nombre: {matriz_heroes[0][indice]} \n"
+                     f"Poder: {matriz_heroes[4][indice]} \n"
+                     f"Altura: {matriz_heroes[5][indice]} \n"
+                     f"Genero: {matriz_heroes[3][indice]} \n"
+                     f"Apodo: {matriz_heroes[2][indice]} \n"
+                     f"Identidad: {matriz_heroes[1][indice]}"
+                )
+                print(mensaje)
 
 def recorrer_matriz_con_personaje_mas_fuerte(matriz_heroes: list[list])-> None:
     
@@ -158,9 +164,15 @@ def recorrer_matriz_con_personaje_mas_fuerte(matriz_heroes: list[list])-> None:
         
         for indice in range(len(matriz_heroes[0])):
             if matriz_heroes[4][indice] == min(matriz_heroes[4]):
-                print(f"Nombre: {matriz_heroes[0][indice]} - Poder: {matriz_heroes[4][indice]} "
-                      f"- Altura: {matriz_heroes[5][indice]} - Genero: {matriz_heroes[3][indice]} "
-                      f"- Apodo: {matriz_heroes[2][indice]} - Identidad: {matriz_heroes[1][indice]}")
+                mensaje = ( 
+                     f"Nombre: {matriz_heroes[0][indice]} \n"
+                     f"Poder: {matriz_heroes[4][indice]} \n"
+                     f"Altura: {matriz_heroes[5][indice]} \n"
+                     f"Genero: {matriz_heroes[3][indice]} \n"
+                     f"Apodo: {matriz_heroes[2][indice]} \n"
+                     f"Identidad: {matriz_heroes[1][indice]}"
+                )
+                print(mensaje)
                 
 def recorrer_matriz_altura_promedio(matriz_heroes: list[list])-> None:
     
@@ -189,7 +201,8 @@ def recorrer_matriz_altura_promedio(matriz_heroes: list[list])-> None:
             cantidad_personajes += 1
         promedio_altura = suma_altura / cantidad_personajes
 
-        print(f"La altura promedio de todos los personajes es: {promedio_altura}")
+        mensaje = f"La altura promedio de todos los personajes es: {promedio_altura}"
+        print(mensaje)
 
 def calcular_personaje_mas_y_menos_alto(matriz_heroes: list[list]) -> None:
 
@@ -223,8 +236,12 @@ def calcular_personaje_mas_y_menos_alto(matriz_heroes: list[list]) -> None:
             altura_mas_alta = altura_actual
             indice_mas_alto = indice
 
-    print(f"El personaje más bajo es: {matriz_heroes[0][indice_mas_bajo]} - Altura: {altura_mas_baja}")
-    print(f"El personaje más alto es: {matriz_heroes[0][indice_mas_alto]} - Altura: {altura_mas_alta}")
+    mensaje = (
+        f"El personaje más bajo es: {matriz_heroes[0][indice_mas_bajo]}\n"
+        f"El personaje más alto es: {matriz_heroes[0][indice_mas_alto]}"
+    )
+    
+    print(mensaje)
 
 def definir_poder_promedio(matriz_heroes: list[list]) -> float:
          
@@ -255,7 +272,8 @@ def definir_poder_promedio(matriz_heroes: list[list]) -> float:
 
         promedio_poder = suma_poder / cantidad_personajes
 
-        print(f"El promedio de poder de todos los personajes es: {promedio_poder}")
+        mensaje = f"El promedio de poder de todos los personajes es: {promedio_poder}"
+        print(mensaje)
 
         return promedio_poder
 
@@ -276,7 +294,8 @@ def personajes_por_encima_poder_promedio(matriz_heroes: list[list], promedio_pod
             if matriz_heroes[4][indice] > promedio_poder:
                 lista_personajes_por_encima_poder_promedio.append(matriz_heroes[0][indice])
         
-        print(f"Los personajes que superan el promedio de poder son: {lista_personajes_por_encima_poder_promedio}") 
+        mensaje = f"El promedio de poder es: {promedio_poder}"
+        print(mensaje)
 
         return lista_personajes_por_encima_poder_promedio   
 
@@ -301,7 +320,8 @@ def cantidad_total_personajes(matriz_heroes: list[list]) -> int:
         """
         
         cantidad_total_personajes = len(matriz_heroes[0])
-        print(f"La cantidad total de personajes es: {cantidad_total_personajes}")
+        mensaje = f"La cantidad total de personajes es: {cantidad_total_personajes}"
+        print(mensaje)
         
         return cantidad_total_personajes 
 
@@ -336,8 +356,11 @@ def calcular_genero_personajes(matriz_heroes: list[list]) -> list[list]:
             elif matriz_heroes[3][indice] == lista_generos[2]:
                 lista_cantidad_generos[2] += 1
 
-        print(f"Cantidad de personajes Femeninos: {lista_cantidad_generos[0]}")
-        print(f"Cantidad de personajes Masculinos: {lista_cantidad_generos[1]}")
-        print(f"Cantidad de personajes No-Binarios: {lista_cantidad_generos[2]}")
-
+        mensaje = (
+            f"Cantidad de personajes Femeninos: {lista_cantidad_generos[0]}\n"
+            f"Cantidad de personajes Masculinos: {lista_cantidad_generos[1]}\n"
+            f"Cantidad de personajes No-Binarios: {lista_cantidad_generos[2]}"
+        )
+        print(mensaje)
+       
         return lista_cantidad_generos

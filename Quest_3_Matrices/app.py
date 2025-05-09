@@ -1,4 +1,4 @@
-from utn_fra.datasets import matriz_data_heroes_small
+from utn_fra.datasets import matriz_data_heroes
 from utn_fra.funciones.auxiliares import clear_console
 from utn_biblioteca import (
     validar_opciones_menu,
@@ -81,4 +81,4 @@ def application(matriz_heroes: list[list]):
         clear_console()
 
 
-application(matriz_data_heroes_small)
+application(matriz_data_heroes)

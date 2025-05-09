@@ -12,7 +12,10 @@ from utn_biblioteca import (
     definir_poder_promedio,
     personajes_por_encima_poder_promedio,
     cantidad_total_personajes,
-    calcular_genero_personajes
+    calcular_genero_personajes,
+    ordenar_quick_sort,
+    mostrar_personajes_ordenados_poder,
+    mostrar_personajes_ordenados_altura
 )
 
 def application(matriz_heroes: list[list]):
@@ -68,11 +71,26 @@ def application(matriz_heroes: list[list]):
             case 10: # Calcular e informar cuántos personajes son de género Femenino, cuantos Masculino y cuantos No-Binario
                 calcular_genero_personajes(matriz_heroes)
 
-                
- 
+            case 11: # Ordenar los personajes en orden descendente según su poder, luego mostrarlos por consola con su nombre y poder numérico.
+                ordenar_quick_sort(matriz_heroes, 0, len(matriz_heroes[0]) - 1, 4)
+                mostrar_personajes_ordenados_poder(matriz_heroes, 4)
 
-            
-            
+            case 12: # Ordenar los personajes en orden ascendente según su altura. Luego mostrar por consola su nombre y altura numérica. 
+                ordenar_quick_sort(matriz_heroes, 0, len(matriz_heroes[0]) - 1, 5)
+                mostrar_personajes_ordenados_altura(matriz_heroes, 5)
+
+            case 13: # Determinar el promedio de poder de todos los personajes MASCULINOS e informar qué personaje/s FEMENINOS 
+                    # están por encima de ese promedio.
+                pass
+
+            case 14: #Determinar el promedio de altura de todos los personajes FEMENINOS e informar qué personaje/s (cualquier género) 
+                    # están por debajo de ese promedio.
+                pass
+
+            case 15: #Determinar el promedio de nivel de poder de los personajes No-Binario e informar qué personaje/s (cualquier género) 
+                    # están por encima de ese promedio
+                pass
+ 
             case 16:  # Salir del programa
                 print("Saliendo del programa...")
                 ejecutando = False

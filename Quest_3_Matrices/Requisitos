@@ -1,0 +1,38 @@
+La App en cuestión debe tener el siguiente menú de opciones:
+
+Opciones del menú:
+
+Recorrer la matriz imprimiendo por consola el nombre de cada personaje
+
+Recorrer la matriz imprimiendo por consola el nombre de cada personaje junto a la altura del mismo.
+
+Recorrer la matriz y mostrar todos los datos del personaje más débil.
+
+Recorrer la matriz y mostrar todos los datos del personaje más fuerte.
+
+Recorrer la matriz y determinar la altura promedio de los personajes.
+
+Recorrer la matriz y determinar LA MITAD DEL PROMEDIO de poder de los personajes.
+
+Calcular e informar cual es el personaje más y menos alto.
+
+Determinar el promedio de nivel de poder de todos los personajes e informar qué personaje/s están por encima de ese promedio.
+
+Calcular e informar la cantidad total de personajes.
+
+Calcular e informar cuántos personajes son de género Femenino, cuantos Masculino y cuantos No-Binario
+
+Ordenar los personajes en orden descendente según su poder, luego mostrarlos por consola con su nombre y poder numérico.
+
+Ordenar los personajes en orden ascendente según su altura. Luego mostrar por consola su nombre y altura numérica. 
+
+Determinar el promedio de poder de todos los personajes MASCULINOS e informar qué personaje/s FEMENINOS 
+están por encima de ese promedio.
+
+Determinar el promedio de altura de todos los personajes FEMENINOS e informar qué personaje/s (cualquier género) 
+están por debajo de ese promedio.
+
+Determinar el promedio de nivel de poder de los personajes No-Binario e informar qué personaje/s (cualquier género) 
+están por encima de ese promedio
+
+Salir

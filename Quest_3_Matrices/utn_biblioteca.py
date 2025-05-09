@@ -111,7 +111,7 @@ def recorrer_matriz_con_altura(matriz_heroes: list[list])-> None:
         """
         
         for indice in range(len(matriz_heroes[0])):
-            mensaje = "Nombre: {matriz_heroes[0][indice]} - Altura: {matriz_heroes[5][indice]}"
+            mensaje = f"Nombre: {matriz_heroes[0][indice]} - Altura: {matriz_heroes[5][indice]}"
             print(mensaje)
 
 def recorrer_matriz_con_personaje_mas_debil(matriz_heroes: list[list])-> None:
@@ -364,3 +364,69 @@ def calcular_genero_personajes(matriz_heroes: list[list]) -> list[list]:
         print(mensaje)
        
         return lista_cantidad_generos
+
+def ordenar_quick_sort(matriz_heroes: list[list], inicio: int, fin: int, indice_criterio_orden: int) -> None:
+    """
+    Ordena los personajes en orden descendente según su poder utilizando QuickSort.
+
+    Args:
+        matriz_heroes (list[list]): Matriz que contiene los datos de los héroes.
+        inicio (int): Índice inicial de la lista.
+        fin (int): Índice final de la lista.
+        indice_criterio_orden (int): Índice de la lista dentro de la matriz que se usará como criterio de orden.
+    """
+    if inicio < fin:
+
+        # Selección del pivote (último elemento)
+        pivote = matriz_heroes[indice_criterio_orden][fin]
+        indice_menor = inicio - 1
+
+        # Recorre las listas pequeñas y reorganiza los elementos
+        for indice_actual in range(inicio, fin):
+            if matriz_heroes[indice_criterio_orden][indice_actual] >= pivote:  # Orden descendente
+                indice_menor += 1  # Si el elemento es mayor o igual al pivote, incrementa el índice
+
+                # Intercambia todas las listas de la matriz en las posiciones indice_menor e indice_actual
+                for indice_lista in range(len(matriz_heroes)):
+                    matriz_heroes[indice_lista][indice_menor], matriz_heroes[indice_lista][indice_actual] = (
+                        matriz_heroes[indice_lista][indice_actual],
+                        matriz_heroes[indice_lista][indice_menor],
+                    )
+
+        # Coloca el pivote en su posición correcta
+        for indice_lista in range(len(matriz_heroes)):
+            matriz_heroes[indice_lista][indice_menor + 1], matriz_heroes[indice_lista][fin] = (
+                matriz_heroes[indice_lista][fin],
+                matriz_heroes[indice_lista][indice_menor + 1],
+            )
+
+        # Llamadas recursivas para ordenar las listas pequeñas izquierda y derecha
+        ordenar_quick_sort(matriz_heroes, inicio, indice_menor, indice_criterio_orden)
+        ordenar_quick_sort(matriz_heroes, indice_menor + 2, fin, indice_criterio_orden)
+
+
+
+def mostrar_personajes_ordenados_poder(matriz_heroes: list[list], indice_criterio_orden: int) -> None:
+    """
+    Muestra los personajes ordenados por el criterio especificado.
+
+    Args:
+        matriz_heroes (list[list]): Matriz que contiene los datos de los héroes.
+        indice_criterio_orden (int): Índice de la lista dentro de la matriz que se usará como criterio de orden.
+    """
+    for indice in range(len(matriz_heroes[0])):
+        mensaje = f"Nombre: {matriz_heroes[0][indice]} - Poder: {matriz_heroes[indice_criterio_orden][indice]}"
+        print(mensaje)
+
+
+def mostrar_personajes_ordenados_altura(matriz_heroes: list[list], indice_criterio_orden: int) -> None:
+    """
+    Muestra los personajes ordenados por el criterio especificado.
+
+    Args:
+        matriz_heroes (list[list]): Matriz que contiene los datos de los héroes.
+        indice_criterio_orden (int): Índice de la lista dentro de la matriz que se usará como criterio de orden.
+    """
+    for indice in range(len(matriz_heroes[0])):
+        mensaje = f"Nombre: {matriz_heroes[0][indice]} - Altura: {matriz_heroes[indice_criterio_orden][indice]}"
+        print(mensaje)

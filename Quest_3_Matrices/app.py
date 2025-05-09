@@ -6,7 +6,13 @@ from utn_biblioteca import (
     recorrer_matriz,
     recorrer_matriz_con_altura,
     recorrer_matriz_con_personaje_mas_debil,
-    recorrer_matriz_con_personaje_mas_fuerte
+    recorrer_matriz_con_personaje_mas_fuerte,
+    recorrer_matriz_altura_promedio,
+    calcular_personaje_mas_y_menos_alto,
+    definir_poder_promedio,
+    personajes_por_encima_poder_promedio,
+    cantidad_total_personajes,
+    calcular_genero_personajes
 )
 
 def application(matriz_heroes: list[list]):
@@ -20,6 +26,7 @@ def application(matriz_heroes: list[list]):
     lista_generos_heroes_small,
     lista_poder_heroes_small,
     lista_alturas_heroes_small
+
     }
     """
     ejecutando = True
@@ -41,6 +48,34 @@ def application(matriz_heroes: list[list]):
 
             case 4: # Recorrer la matriz y mostrar todos los datos del personaje más fuerte.
                 recorrer_matriz_con_personaje_mas_fuerte(matriz_heroes)
+            
+            case 5: # Recorrer la matriz y determinar la altura promedio de los personajes.
+                recorrer_matriz_altura_promedio(matriz_heroes)
+
+            case 6: # Recorrer la matriz y determinar LA MITAD DEL PROMEDIO de poder de los personajes.
+                pass
+
+            case 7: # Calcular e informar cual es el personaje más y menos alto.
+                calcular_personaje_mas_y_menos_alto(matriz_heroes)
+
+            case 8: # Determinar el promedio de nivel de poder de todos los personajes e informar qué personaje/s están por encima de ese promedio.
+                total_promedio_poder = definir_poder_promedio(matriz_heroes)
+                personajes_por_encima_poder_promedio(matriz_heroes, total_promedio_poder)
+
+            case 9: # Calcular e informar la cantidad total de personajes.
+                cantidad_total_personajes(matriz_heroes)
+
+            case 10: # Calcular e informar cuántos personajes son de género Femenino, cuantos Masculino y cuantos No-Binario
+                calcular_genero_personajes(matriz_heroes)
+
+                
+ 
+
+            
+            
+            case 16:  # Salir del programa
+                print("Saliendo del programa...")
+                ejecutando = False
 
 
         clear_console()

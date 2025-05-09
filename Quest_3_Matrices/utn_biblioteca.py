@@ -89,6 +89,7 @@ def recorrer_matriz(matriz_heroes: list[list])-> None:
     """
     
     for indice in range(len(matriz_heroes[0])):
+
         print(f"Nombre: {matriz_heroes[0][indice]}")
 
 def recorrer_matriz_con_altura(matriz_heroes: list[list])-> None:
@@ -110,6 +111,7 @@ def recorrer_matriz_con_altura(matriz_heroes: list[list])-> None:
         """
         
         for indice in range(len(matriz_heroes[0])):
+
             print(f"Nombre: {matriz_heroes[0][indice]} - Altura: {matriz_heroes[5][indice]}")
 
 def recorrer_matriz_con_personaje_mas_debil(matriz_heroes: list[list])-> None:
@@ -139,7 +141,7 @@ def recorrer_matriz_con_personaje_mas_debil(matriz_heroes: list[list])-> None:
 def recorrer_matriz_con_personaje_mas_fuerte(matriz_heroes: list[list])-> None:
     
         """
-        Recorrer la matriz y mostrar todos los datos del personaje más débil.
+        Recorrer la matriz y mostrar todos los datos del personaje más fuerte.
     
         Args: Recibe 1 matriz que contiene 6 listas en este orden:  {
         
@@ -159,3 +161,183 @@ def recorrer_matriz_con_personaje_mas_fuerte(matriz_heroes: list[list])-> None:
                 print(f"Nombre: {matriz_heroes[0][indice]} - Poder: {matriz_heroes[4][indice]} "
                       f"- Altura: {matriz_heroes[5][indice]} - Genero: {matriz_heroes[3][indice]} "
                       f"- Apodo: {matriz_heroes[2][indice]} - Identidad: {matriz_heroes[1][indice]}")
+                
+def recorrer_matriz_altura_promedio(matriz_heroes: list[list])-> None:
+    
+        """
+        Recorrer la matriz y determinar la altura promedio de los personajes.
+    
+        Args: Recibe 1 matriz que contiene 6 listas en este orden:  {
+        
+        lista_nombres_heroes_small,
+        lista_identidades_heroes_small,
+        lista_apodos_heroes_small,
+        lista_generos_heroes_small,
+        lista_poder_heroes_small,
+        lista_alturas_heroes_small
+        
+        }
+        
+        """
+        
+        suma_altura = 0
+        cantidad_personajes = 0
+        promedio_altura = 0
+
+        for indice in range(len(matriz_heroes[0])):
+            suma_altura += matriz_heroes[5][indice]
+            cantidad_personajes += 1
+        promedio_altura = suma_altura / cantidad_personajes
+
+        print(f"La altura promedio de todos los personajes es: {promedio_altura}")
+
+def calcular_personaje_mas_y_menos_alto(matriz_heroes: list[list]) -> None:
+
+    """
+    Calcular e informar cuál es el personaje más y menos alto.
+
+    Args: Recibe 1 matriz que contiene 6 listas en este orden:  {
+    
+    lista_nombres_heroes_small,
+    lista_identidades_heroes_small,
+    lista_apodos_heroes_small,
+    lista_generos_heroes_small,
+    lista_poder_heroes_small,
+    lista_alturas_heroes_small
+    
+    }
+    """
+    altura_mas_baja = matriz_heroes[5][0]
+    altura_mas_alta = matriz_heroes[5][0]
+    indice_mas_bajo = 0
+    indice_mas_alto = 0
+
+    for indice in range(len(matriz_heroes[5])):
+        altura_actual = matriz_heroes[5][indice]
+
+        if altura_actual < altura_mas_baja:
+            altura_mas_baja = altura_actual
+            indice_mas_bajo = indice
+
+        if altura_actual > altura_mas_alta:
+            altura_mas_alta = altura_actual
+            indice_mas_alto = indice
+
+    print(f"El personaje más bajo es: {matriz_heroes[0][indice_mas_bajo]} - Altura: {altura_mas_baja}")
+    print(f"El personaje más alto es: {matriz_heroes[0][indice_mas_alto]} - Altura: {altura_mas_alta}")
+
+def definir_poder_promedio(matriz_heroes: list[list]) -> float:
+         
+        """
+        Determinar el promedio de nivel de poder de todos los personajes
+    
+        Args: Recibe 1 matriz que contiene 6 listas en este orden:  {
+        
+        lista_nombres_heroes_small,
+        lista_identidades_heroes_small,
+        lista_apodos_heroes_small,
+        lista_generos_heroes_small,
+        lista_poder_heroes_small,
+        lista_alturas_heroes_small
+        
+        }
+
+        Returns: Float con el promedio de poder de todos los personajes.
+        
+        """
+        
+        suma_poder = 0
+        cantidad_personajes = 0
+
+        for indice in range(len(matriz_heroes[0])):
+            suma_poder += matriz_heroes[4][indice]
+            cantidad_personajes += 1
+
+        promedio_poder = suma_poder / cantidad_personajes
+
+        print(f"El promedio de poder de todos los personajes es: {promedio_poder}")
+
+        return promedio_poder
+
+def personajes_por_encima_poder_promedio(matriz_heroes: list[list], promedio_poder: float) -> list:
+    
+        """
+        Informar qué personaje/s están por encima de ese promedio.
+    
+        Args: Recibe el promedio de poder de todos los personajes obtenido en la funcion definir_poder_promedio.
+
+        Returns: Devuelve una lista con los personajes que superan el promedio de poder.
+        
+        """
+
+        lista_personajes_por_encima_poder_promedio = []
+
+        for indice in range(len(matriz_heroes[0])):
+            if matriz_heroes[4][indice] > promedio_poder:
+                lista_personajes_por_encima_poder_promedio.append(matriz_heroes[0][indice])
+        
+        print(f"Los personajes que superan el promedio de poder son: {lista_personajes_por_encima_poder_promedio}") 
+
+        return lista_personajes_por_encima_poder_promedio   
+
+def cantidad_total_personajes(matriz_heroes: list[list]) -> int:
+    
+        """
+        Calcular e informar la cantidad total de personajes.
+    
+        Args: Recibe 1 matriz que contiene 6 listas en este orden:  {
+        
+        lista_nombres_heroes_small,
+        lista_identidades_heroes_small,
+        lista_apodos_heroes_small,
+        lista_generos_heroes_small,
+        lista_poder_heroes_small,
+        lista_alturas_heroes_small
+        
+        }
+
+        Returns: Int con la cantidad total de personajes.
+        
+        """
+        
+        cantidad_total_personajes = len(matriz_heroes[0])
+        print(f"La cantidad total de personajes es: {cantidad_total_personajes}")
+        
+        return cantidad_total_personajes 
+
+def calcular_genero_personajes(matriz_heroes: list[list]) -> list[list]:
+    
+        """
+        Calcular e informar cuántos personajes son de género Femenino, cuantos Masculino y cuantos No-Binario
+    
+        Args: Recibe 1 matriz que contiene 6 listas en este orden:  {
+        
+        lista_nombres_heroes_small,
+        lista_identidades_heroes_small,
+        lista_apodos_heroes_small,
+        lista_generos_heroes_small,
+        lista_poder_heroes_small,
+        lista_alturas_heroes_small
+        
+        }
+
+        Returns: Una matriz que contiene estas tres listas {Femenino, Masculino, No-Binario} con la cantidad de personajes por genero.
+        
+        """
+        
+        lista_generos = ["Femenino", "Masculino", "No-Binario"]
+        lista_cantidad_generos = [0, 0, 0]
+
+        for indice in range(len(matriz_heroes[0])):
+            if matriz_heroes[3][indice] == lista_generos[0]:
+                lista_cantidad_generos[0] += 1
+            elif matriz_heroes[3][indice] == lista_generos[1]:
+                lista_cantidad_generos[1] += 1
+            elif matriz_heroes[3][indice] == lista_generos[2]:
+                lista_cantidad_generos[2] += 1
+
+        print(f"Cantidad de personajes Femeninos: {lista_cantidad_generos[0]}")
+        print(f"Cantidad de personajes Masculinos: {lista_cantidad_generos[1]}")
+        print(f"Cantidad de personajes No-Binarios: {lista_cantidad_generos[2]}")
+
+        return lista_cantidad_generos

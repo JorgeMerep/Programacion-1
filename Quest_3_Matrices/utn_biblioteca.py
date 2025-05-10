@@ -163,7 +163,7 @@ def recorrer_matriz_con_personaje_mas_fuerte(matriz_heroes: list[list])-> None:
         """
         
         for indice in range(len(matriz_heroes[0])):
-            if matriz_heroes[4][indice] == min(matriz_heroes[4]):
+            if matriz_heroes[4][indice] == max(matriz_heroes[4]):
                 mensaje = ( 
                      f"Nombre: {matriz_heroes[0][indice]} \n"
                      f"Poder: {matriz_heroes[4][indice]} \n"

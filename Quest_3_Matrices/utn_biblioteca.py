@@ -430,3 +430,66 @@ def mostrar_personajes_ordenados_altura(matriz_heroes: list[list], indice_criter
     for indice in range(len(matriz_heroes[0])):
         mensaje = f"Nombre: {matriz_heroes[0][indice]} - Altura: {matriz_heroes[indice_criterio_orden][indice]}"
         print(mensaje)
+
+#-------------------------------------------------
+
+lista_a = ["anita lava la tina","Raul", "Menem", "neuquen", "Radar", "mAfaldA", "zoOm", "49", "010"]
+
+# SANEAR STRING
+def sanear_cadena(cadena: str) -> list[str]:
+ 
+    input_min = cadena.lower()
+    validacion_espacios = []
+    for i in range(len(input_min)):
+        if input_min[i] != " ":
+            validacion_espacios.append(input_min[i])
+
+    return validacion_espacios
+
+# VALIDAR SI ES PALINDROMO
+def identificar_palindromo(input: str) -> bool: 
+
+    validacion_espacios = sanear_cadena(cadena=input)
+    print(f"validacion_espacios: {validacion_espacios}")
+    for i in range(len(validacion_espacios)):
+
+        variable = (-1 - i)
+
+        if validacion_espacios[i] != validacion_espacios[variable]:
+            print("La oración no es palindromo")
+            return False
+
+    print(f"Frase correcta: {validacion_espacios}")
+    return True
+
+# VALIDAR LISTA DE PALINDROMO
+def identificar_palindromo_list(listado_frases: list[str]) -> bool: 
+
+    listado_validado = []
+
+    for index in range(len(listado_frases)):
+        variable = False
+        if not listado_frases[index].isdigit():
+            respuesta = identificar_palindromo(listado_frases[index])
+            variable = respuesta
+
+        listado_validado.append([listado_frases[index], variable])
+
+    return listado_validado
+
+# MOSTRAR RESULTADO DE DOS LISTAS
+def visualizar_resultado(matriz_ordenada: list[list]) -> str:
+
+    mensaje = ''
+    print("\nEl resultado es: \n")
+    for index in range(len(matriz_ordenada)):
+        mensaje += f"Frase: {matriz_ordenada[index][0]:18} | Con valor: {matriz_ordenada[index][1]} \n"
+    return mensaje
+
+
+resultado = identificar_palindromo_list(listado_frases=lista_a)
+
+visualizador = visualizar_resultado(matriz_ordenada=resultado)
+
+#print(resultado)
+print(visualizador)

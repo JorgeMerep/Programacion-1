@@ -1,0 +1,17 @@
+Realizar un menú de opciones:
+
+1.	Crear Matriz: para ello deberá crear una función que en base a las listas, cree una matriz con los datos para trabajar.
+2.	Recorrer la matriz y mostrar la info con formato: id,nombre,tipo,poder,condición.
+3.	Buscar y mostrar la info de los Pokémons que superen el promedio de poder.
+4.	Ordenar la matriz por poder DES de los Pokémons que sean legendarios.
+5.	Filtrar/buscar en la matriz todos los Pokémons cuyo tipo sea fuego y mostrarlos.
+6.	Trasponer la matriz y mostrar su información prolija.
+7.	Salir.
+
+A tener en cuenta:
+1 - Una función no debería tener doble bucle anidado, en caso de necesitarlo es preferible
+que lleves un bucle a otra función.
+2 - DEBES usar recursión para validar datos de entrada del usuario
+3 - DEBES validar que la matriz no esté vacía para realizar cada acción del menú
+4 - DEBES separar en módulos las funciones, cada módulo debe tener dentro funciones 
+que tengan relación entre sí. (mostrar info, calcular, recorrer, etc)

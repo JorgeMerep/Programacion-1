@@ -1,21 +1,27 @@
 from lista_duracion import lista_duraciones_datos
 from lista_nombres import lista_nombres_videos
 from lista_views import lista_vistas_videos
+
 from outputs import (
     mostrar_menu,
     mensaje_matriz_creada
 )
+
 from validaciones import (
     validar_recursivamente_opciones_menu,
     crear_matriz,
-    recorrer_matriz,
+    recorrer_matriz
+)
+
+from ordenamiento_filtrado import(
     calcular_promedio,
     mostrar_menor_promedio,
     mostrar_datos_videos_menor_promedio,
     buscar_duracion,
     mostrar_datos_videos_mayor_duracion,
-    ordenamiento_quick_sort_matriz
-    )
+    ordenamiento_selection_sort_matriz
+)
+
 from utn_fra.funciones.auxiliares import clear_console
 
 
@@ -47,13 +53,13 @@ def application(lista_nombres_videos, lista_vistas_videos, lista_duraciones_dato
                 mostrar_datos_videos_mayor_duracion(matriz_datos, lista_indices_duracion)
 
             case 5: #Ordenar la matriz por views ASC y mostrar dicha matriz de forma prolija.
-                print(ordenamiento_quick_sort_matriz)
-                # ordenamiento_quick_sort_matriz(matriz_datos, 1, "asc")
+                ordenamiento_selection_sort_matriz(matriz_datos, 1, "asc")
                 pass
 
             case 9:
                 print("Saliendo de la aplicación...")
                 ejecutando = False
 
-
+        clear_console()
+        
 application(lista_nombres_videos, lista_vistas_videos, lista_duraciones_datos)

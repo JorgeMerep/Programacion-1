@@ -1,0 +1,15 @@
+Realizar un menú de opciones:
+Mostrar Datos: Recorrer la matriz y mostrar la info con formato: nombre,género,altura,peso.
+Buscar Datos: Buscar y mostrar la info de los personajes que no superen el promedio de altura ni de peso.
+Ordenar Datos: Ordenar la matriz por peso ASC de los personajes que sean del género femenino.
+Filtrar Datos: Filtrar/buscar en la matriz todos los personajes cuyo género sea “n/a” y mostrarlos.
+Trasponer Datos: Trasponer la matriz y mostrar su información prolija.
+Salir.
+
+A tener en cuenta:
+1 - Una función no debería tener doble bucle anidado, en caso de necesitarlo es preferible
+que lleves un bucle a otra función.
+2 - DEBES usar recursión para validar datos de entrada del usuario
+3 - DEBES validar que la matriz no esté vacía para realizar cada acción del menú
+4 - DEBES separar en módulos las funciones, cada módulo debe tener dentro funciones 
+que tengan relación entre sí. (mostrar info, calcular, recorrer, etc)

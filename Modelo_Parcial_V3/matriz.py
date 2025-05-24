@@ -115,7 +115,7 @@ def calcular_promedio(matriz_base: list[list], indice_busqueda_altura: int)->flo
         suma_dato += int(matriz_base[indice_busqueda_altura][indice_columna])
 
     promedio = suma_dato / cantidad_indices
-    print (f'El promedio de {indice_busqueda_altura} obtenido es de: {promedio:5.2f}')
+    print (f'El promedio de obtenido es de: {promedio:5.2f}')
 
     return promedio
 

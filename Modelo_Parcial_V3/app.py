@@ -9,7 +9,6 @@ calcular_promedio,
 filtrar_altura_peso_matriz_traspuesta,
 filtrar_genero_matriz_traspuesta,
 selection_sort_matriz
-
  )
 
 

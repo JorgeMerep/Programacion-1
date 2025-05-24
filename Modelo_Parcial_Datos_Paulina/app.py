@@ -1,65 +1,87 @@
-from lista_duracion import lista_duraciones_datos
-from lista_nombres import lista_nombres_videos
-from lista_views import lista_vistas_videos
-
-from outputs import (
-    mostrar_menu,
-    mensaje_matriz_creada
-)
-
-from validaciones import (
-    validar_recursivamente_opciones_menu,
-    crear_matriz,
-    recorrer_matriz
-)
-
-from ordenamiento_filtrado import(
-    calcular_promedio,
-    mostrar_menor_promedio,
-    mostrar_datos_videos_menor_promedio,
-    buscar_duracion,
-    mostrar_datos_videos_mayor_duracion,
-    ordenamiento_selection_sort_matriz
-)
-
 from utn_fra.funciones.auxiliares import clear_console
+from outputs import (mostrar_menu, mensaje_matriz_creada)
+from validaciones import validar_recursivamente_opciones_menu
+from matriz import (
+    crear_matriz_base, 
+    mostrar_datos_matriz_base,
+    trasponer_matriz,
+    mostrar_matriz_traspuesta_con_formato,
+    calcular_promedio,
+    filtrar_views_matriz_traspuesta,
+    filtrar_duracion_matriz_traspuesta,
+    selection_sort_matriz_traspuesta
+)
 
 
-def application(lista_nombres_videos, lista_vistas_videos, lista_duraciones_datos):
+
+def app(lista_nombres_videos, lista_vistas_videos, lista_duraciones_datos):
+
     ejecutando = True
-    matriz_datos = []
+    matriz_base = []
+    matriz_cargada = False
 
     while ejecutando:
+
         mostrar_menu()
         opcion_elegida_usuario = validar_recursivamente_opciones_menu(1, 9)
         clear_console()
 
         match opcion_elegida_usuario:
-
-            case 1: # Crear Matriz
-                matriz_datos = crear_matriz(lista_nombres_videos, lista_vistas_videos, lista_duraciones_datos)
-                mensaje_matriz_creada()
+            case 1: # Crear Matriz: para ello deberá crear una función que en base a las listas, cree una matriz con los datos para trabajar
+                matriz_base = crear_matriz_base(lista_nombres_videos, lista_vistas_videos, lista_duraciones_datos)
+                matriz_cargada = True
+                mensaje = 'La matriz fue creada con exito.'
+                print(mensaje)
                 
             case 2: # Recorrer la matriz y mostrar la info con formato: nombre,views,duración.
-                recorrer_matriz(matriz_datos)
+                if matriz_cargada:
+                  mostrar_datos_matriz_base(matriz_base) 
+           
+            case 3: # Buscar y mostrar la info de los videos que no superen el promedio de views.
+                if matriz_cargada:
+                    dato_busqueda = calcular_promedio(matriz_base, 1)
+                    matriz_traspuesta = trasponer_matriz(matriz_base)
+                    matriz_filtrada = filtrar_views_matriz_traspuesta(matriz_traspuesta, 1, dato_busqueda)
+                    mostrar_matriz_traspuesta_con_formato(matriz_filtrada)
+          
+            case 4: # Buscar y mostrar la info de los videos que superen 150 seg de duración.
+                if matriz_cargada:
+                    matriz_traspuesta = trasponer_matriz(matriz_base)
+                    matriz_filtrada = filtrar_duracion_matriz_traspuesta(matriz_traspuesta, 2, 150)
+                    mostrar_matriz_traspuesta_con_formato(matriz_filtrada)
 
-            case 3: # Buscar y mostrar la info de los videos que no superen el promedio_views de views.
-                promedio_views =calcular_promedio(matriz_datos, 1)
-                lista_indices_menor_promedio = mostrar_menor_promedio(matriz_datos, promedio_views)
-                mostrar_datos_videos_menor_promedio(matriz_datos, lista_indices_menor_promedio)
-                
-            case 4: #Buscar y mostrar la info de los videos que superen 150 seg de duración.
-                lista_indices_duracion = buscar_duracion(matriz_datos, 2, 150)
-                mostrar_datos_videos_mayor_duracion(matriz_datos, lista_indices_duracion)
+            case 5: # Ordenar la matriz por views ASC y mostrar dicha matriz de forma prolija.
+                if matriz_cargada:
+                    matriz_traspuesta = trasponer_matriz (matriz_base)
+                    matriz_filtrada = selection_sort_matriz_traspuesta(matriz_traspuesta, 1, "asc")
+                    mostrar_matriz_traspuesta_con_formato(matriz_filtrada)
+            
+            case 6: # Ordenar la matriz por duración DES y mostrar dicha matriz de forma prolija.
+                if matriz_cargada:
+                    matriz_traspuesta = trasponer_matriz (matriz_base)
+                    matriz_filtrada = selection_sort_matriz_traspuesta(matriz_traspuesta, 2, "desc")
+                    mostrar_matriz_traspuesta_con_formato(matriz_filtrada)
+            
+            case 7: # Filtrar/buscar en la matriz todos los videos que superen el promedio de duración y mostrarlos.
+                if matriz_cargada:
+                    dato_busqueda = calcular_promedio(matriz_base, 2)
+                    matriz_traspuesta = trasponer_matriz(matriz_base)
+                    matriz_filtrada = filtrar_duracion_matriz_traspuesta(matriz_traspuesta, 2, dato_busqueda)
+                    mostrar_matriz_traspuesta_con_formato(matriz_filtrada)
+            
+            case 8: # Trasponer la matriz y mostrar su información prolija.
+                if matriz_cargada:
+                    matriz_traspuesta = trasponer_matriz(matriz_base)
+                    mostrar_matriz_traspuesta_con_formato(matriz_traspuesta)
 
-            case 5: #Ordenar la matriz por views ASC y mostrar dicha matriz de forma prolija.
-                ordenamiento_selection_sort_matriz(matriz_datos, 1, "asc")
-                pass
-
-            case 9:
-                print("Saliendo de la aplicación...")
+            case 9: #Salir de la app
                 ejecutando = False
+                mensaje = 'Saliendo de la aplicacion'
+                print (mensaje)
+                                    
 
-        clear_console()
+        if not matriz_cargada:
+            mensaje = 'Primero debe ingresar la opcion 1.'
+            print(mensaje)
         
-application(lista_nombres_videos, lista_vistas_videos, lista_duraciones_datos)
+        clear_console()

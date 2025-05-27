@@ -20,8 +20,3 @@ def mostrar_menu():
 
         """ 
         print(menu)
-
-def mensaje_matriz_creada():
-        
-        mensaje = 'La matriz fue creada con exito'
-        print(mensaje)

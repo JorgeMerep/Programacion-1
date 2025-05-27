@@ -1,0 +1,29 @@
+def mostrar_menu():
+
+        """
+        Mostrar el menu de opciones en pantalla.
+        
+        """
+        menu =\
+        """
+        Bienvenido al Menu de Opciones:
+
+        1. Mostrar Datos: Recorrer la matriz y mostrar la info con formato: 
+        nombre | vistas | duración. (no respetar el formato, hará que el ejercicio este mal)
+
+        2. Buscar Datos: Buscar y mostrar la info de los videos que superen el promedio de views y también el promedio 
+        de duración.
+
+        3. Ordenar Datos: Ordenar la matriz por views DES de todos los videos.
+
+        4. Filtrar Datos: Filtrar en la matriz todos los videos en cuyo nombre haya un numeral 
+        (Ejemplo: Luck Ra || BZRP Music Sessions #61) y mostrar toda su información.
+
+        5. Trasponer Datos: Trasponer la matriz y mostrar su información prolija.
+        
+        6. Salir.
+
+        """ 
+        print(menu)
+
+        

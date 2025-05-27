@@ -13,7 +13,6 @@ from matriz import (
 )
 
 
-
 def app(lista_nombres_videos, lista_vistas_videos, lista_duraciones_datos):
 
     ejecutando = True
